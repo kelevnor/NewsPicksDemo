@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#18181a</color>
+    <color name="colorPrimaryDark">#18181a</color>
+    <color name="colorAccent">#e08038</color>
+    <color name="colorLoginDark">#18181a</color>
+    <color name="grey1">#FAFAFA</color>
+    <color name="grey2">#CCC</color>
+    <color name="grey3">#DDD</color>
+    <color name="orangeDark">#e08038</color>
+    <color name="orangeDarkPressed">#894d20</color>
+    <color name="orangeLight">#f9d586</color>
+    <color name="orangeLightPressed">#b4995f</color>
+    <color name="white">#FFF</color>
+
+</resources>
