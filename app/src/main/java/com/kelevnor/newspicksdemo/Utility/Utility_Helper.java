@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Utility_Helper {
 
-    public static ArrayList<Dummy_Model> populateListWithDummies(Context con){
+    public static ArrayList<Dummy_Model> populateListWithDummyCredentials(Context con){
         ArrayList<Dummy_Model> myDummyList = new ArrayList<>();
         for (int i =1; i<11; i++){
             Dummy_Model temp = new Dummy_Model();
@@ -24,6 +24,17 @@ public class Utility_Helper {
             myDummyList.add(temp);
         }
         return myDummyList;
+    }
+
+    public static ArrayList<String> populateListWithImageUrls(){
+        PublicStaticVariables.imgUrls = new ArrayList<>();
+        PublicStaticVariables.imgUrls.add(PublicStaticVariables.img_url_1);
+        PublicStaticVariables.imgUrls.add(PublicStaticVariables.img_url_2);
+        PublicStaticVariables.imgUrls.add(PublicStaticVariables.img_url_3);
+        PublicStaticVariables.imgUrls.add(PublicStaticVariables.img_url_4);
+        PublicStaticVariables.imgUrls.add(PublicStaticVariables.img_url_5);
+        PublicStaticVariables.imgUrls.add(PublicStaticVariables.img_url_6);
+        return PublicStaticVariables.imgUrls;
     }
 
     public static boolean isEmailValid(String email) {

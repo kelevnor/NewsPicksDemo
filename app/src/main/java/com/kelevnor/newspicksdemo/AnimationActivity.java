@@ -10,36 +10,44 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import com.kelevnor.newspicksdemo.Adapter.Adapter_CircularView;
+import com.kelevnor.newspicksdemo.Utility.PublicStaticVariables;
+import com.kelevnor.newspicksdemo.Utility.Utility_Helper;
+import com.sababado.circularview.CircularView;
+import com.sababado.circularview.Marker;
+import com.sababado.circularview.SimpleCircularViewAdapter;
+
 public class AnimationActivity extends AppCompatActivity {
+    CircularView circularView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
+        setViews();
+        calibrateCircularView();
+        Utility_Helper.populateListWithImageUrls();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                PopupWindow mpopup;
+        Adapter_CircularView mAdapter = new Adapter_CircularView(this);
+        circularView.setAdapter(mAdapter);
 
-                                View popUpView = getLayoutInflater().inflate(R.layout.alert_indicator_custom,
-                                        null); // inflating popup layout
-                                mpopup = new PopupWindow(popUpView, LinearLayout.LayoutParams.FILL_PARENT,
-                                        LinearLayout.LayoutParams.WRAP_CONTENT, true); // Creation of popup
-                                mpopup.setAnimationStyle(android.R.style.Animation_Dialog);
-                                mpopup.showAtLocation(popUpView, Gravity.CENTER, 0, 0);
-                            }
-                        }).show();
-            }
-        });
     }
+
+    private void calibrateCircularView(){
+
+        // Allow markers to continuously animate on their own when the highlight animation isn't running.
+        // The flag can also be set in XML
+        circularView.setAnimateMarkerOnStillHighlight(true);
+        // Combine the above line with the following so that the marker at it's position will animate at the start.
+        // The highlighted Degree can also be defined in XML
+        circularView.setHighlightedDegree(CircularView.BOTTOM);
+    }
+
+    private void setViews(){
+        circularView = (CircularView) findViewById(R.id.circular_view);
+    }
+
+
 
 }

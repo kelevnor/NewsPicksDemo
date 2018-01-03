@@ -14,7 +14,6 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kelevnor.newspicksdemo.Models.Dummy_Model;
@@ -45,40 +44,38 @@ public class LoginActivity extends AppCompatActivity implements TextView.OnEdito
     private EditText mEmailView;
     private EditText mPasswordView;
     private Button mEmailSignInButton;
-    private LinearLayout outerlayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Removing Soft Keyboard from opening when creating the activity
-        //just before setting the view content, so keyboard will be hidden no matter what
+        // Removing Soft Keyboard from opening when creating the activity
+        // just before setting the view content, so keyboard will be hidden no matter what
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.activity_login);
         // Set up the login form.
         setViews();
-        //Check for permissions for newer and older Phone Architectures
+        // Check for permissions for newer and older Phone Architectures
         if (Build.VERSION.SDK_INT >= 23) {
             Utility_Helper_Context.requestPemissions(LoginActivity.this, PERMISSION_REQUEST);
         }
-        //Populate list to check against for valid credentials
-        dummyList = Utility_Helper.populateListWithDummies(getApplicationContext());
+        // Populate list to check against for valid credentials
+        dummyList = Utility_Helper.populateListWithDummyCredentials(getApplicationContext());
 
-        //Instantiate constructor to assign the class implementing TextWatcher
-        //on email and password views and keeping their constant state to adjust the login button's
-        //background based on that
+        // Instantiate constructor to assign the class implementing TextWatcher
+        // on email and password views and keeping their constant state to adjust the login button's
+        // background based on that
         LoginTextWatcher textWatcher = new LoginTextWatcher(this, mEmailSignInButton, mEmailView, mPasswordView);
         mPasswordView.addTextChangedListener(textWatcher);
         mEmailView.addTextChangedListener(textWatcher);
 
-        mEmailSignInButton.setOnClickListener(this);
         mPasswordView.setOnEditorActionListener(this);
+        mEmailSignInButton.setOnClickListener(this);
     }
 
     private void setViews(){
         mEmailView = findViewById(R.id.email);
         mPasswordView = findViewById(R.id.password);
         mEmailSignInButton = findViewById(R.id.email_sign_in_button);
-        outerlayout = findViewById(R.id.ll_outer);
     }
 
     /**
@@ -88,21 +85,9 @@ public class LoginActivity extends AppCompatActivity implements TextView.OnEdito
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         if (requestCode == PERMISSION_REQUEST) {
-
+            // Do some action after result return of a permission request
         }
     }
-
-
-
-//    private boolean isEmailValid(String email) {
-//        //TODO: Replace this with your own logic
-//        return email.contains("@");
-//    }
-//
-//    private boolean isPasswordValid(String password) {
-//        //TODO: Replace this with your own logic
-//        return password.length() > 4;
-//    }
 
     @Override
     public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -187,6 +172,8 @@ public class LoginActivity extends AppCompatActivity implements TextView.OnEdito
         if (cancel) {
             focusView.requestFocus();
         } else {
+            // if user flow not cancelled execute Simulate_Login_Task asyncronous task
+            // to simulate login
             Simulate_Login_Task task = new Simulate_Login_Task(this, dummyList, email, password);
             task.setOnResultListener(asynResult);
             task.execute();

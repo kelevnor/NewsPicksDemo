@@ -7,6 +7,7 @@
     <color name="grey1">#FAFAFA</color>
     <color name="grey2">#CCC</color>
     <color name="grey3">#DDD</color>
+    <color name="orangeDarkLowOpacity">#10e08038</color>
     <color name="orangeDark">#e08038</color>
     <color name="orangeDarkPressed">#894d20</color>
     <color name="orangeLight">#f9d586</color>

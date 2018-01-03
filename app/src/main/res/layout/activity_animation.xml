@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kelevnor.newspicksdemo.AnimationActivity">
+    android:background="@color/colorPrimaryDark">
+
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+        <com.sababado.circularview.CircularView
+            android:id="@+id/circular_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            app:centerBackgroundColor="#0000"
+            app:centerDrawable="@drawable/bg_circle_center_drawable"/>
+    </LinearLayout>
+</RelativeLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.kelevnor.newspicksdemo.AnimationActivity">-->
 
     <!--<android.support.design.widget.AppBarLayout-->
         <!--android:layout_width="match_parent"-->
@@ -20,14 +42,15 @@
 
     <!--</android.support.design.widget.AppBarLayout>-->
 
-    <include layout="@layout/content_animation" />
+    <!--<include layout="@layout/content_animation" />-->
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
-</android.support.design.widget.CoordinatorLayout>
+
+<!--</android.support.design.widget.CoordinatorLayout>-->

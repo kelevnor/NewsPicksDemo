@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.kelevnor.newspicksdemo.AnimationActivity"
     tools:showIn="@layout/activity_animation">
 
-</android.support.constraint.ConstraintLayout>
+    <com.sababado.circularview.CircularView
+        android:id="@+id/circular_view"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        app:centerBackgroundColor="#0000"
+        app:centerDrawable="@drawable/bg_circle_center_drawable"/>
+
+</RelativeLayout>
