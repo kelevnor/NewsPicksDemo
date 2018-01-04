@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class PublicStaticVariables {
 
-    static ArrayList<String> imgUrls;
+    public static ArrayList<String> imgUrls;
 
-    static String[] REQUIRED_PERMISSIONS = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.INTERNET, Manifest.permission.ACCESS_NETWORK_STATE};
+    static String[] REQUIRED_PERMISSIONS = {android.Manifest.permission.INTERNET, android.Manifest.permission.ACCESS_NETWORK_STATE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.READ_EXTERNAL_STORAGE};
 
     static String img_url_1 = "https://contents.newspicks.us/users/100013/cover?circle=true";
     static String img_url_2 = "https://contents.newspicks.us/users/100269/cover?circle=true";

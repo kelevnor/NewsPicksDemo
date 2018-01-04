@@ -22,6 +22,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.kelevnor.newspicksdemo.R;
@@ -59,8 +60,10 @@ public class ImageLoader {
         executorService.submit(new PhotosLoader(p));
     }
 
-    private Bitmap getBitmap(String url)
+    public Bitmap getBitmap(String url)
     {
+
+        Log.e("url", url);
         File f=fileCache.getFile(url);
 
         //from SD cache
