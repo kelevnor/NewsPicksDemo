@@ -1,10 +1,14 @@
 package com.kelevnor.newspicksdemo.Tasks;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
 import com.kelevnor.newspicksdemo.Models.Dummy_Model;
 import com.kelevnor.newspicksdemo.R;
+import com.kelevnor.newspicksdemo.Utility.ImageLoader;
+import com.kelevnor.newspicksdemo.Utility.PublicStaticVariables;
+import com.kelevnor.newspicksdemo.Utility.Utility_Helper_Context;
 
 import java.util.ArrayList;
 
@@ -13,22 +17,19 @@ import java.util.ArrayList;
  */
 
 
-public class Simulate_Login_Task extends AsyncTask<Void, Void, Void> {
+public class Download_Bitmaps_Task extends AsyncTask<Void, Void, Void> {
 
     Activity act;
     boolean completedCall = false;
+    ImageLoader imageLoader;
     OnAsyncResult onAsyncResult;
-    ArrayList<Dummy_Model> list;
-    String username;
-    String password;
+    ArrayList<Bitmap> bitmapList;
     /**
      * @author Marios Sifalakis
      */
-    public Simulate_Login_Task(Activity act, ArrayList<Dummy_Model> list, String username, String password){
+    public Download_Bitmaps_Task(Activity act){
         this.act = act;
-        this.list = list;
-        this.username = username;
-        this.password = password;
+        imageLoader = new ImageLoader(act);
     }
 
     public void setOnResultListener(OnAsyncResult onAsyncResult) {
@@ -40,14 +41,20 @@ public class Simulate_Login_Task extends AsyncTask<Void, Void, Void> {
      * @author Marios Sifalakis
      * @return "VOID"
      *
-     * Async task to Simulate Work for Validating Login Credentials
+     * Async task to Download Bitmaps from Urls
      */
 
     @Override
     protected Void doInBackground(Void... params) {
 
         try {
-            completedCall = performCheckOnCredentials();
+            if(Utility_Helper_Context.hasInternet(act)){
+                completedCall = downloadImages();
+            }
+            else{
+                completedCall = false;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             completedCall=false;
@@ -59,29 +66,29 @@ public class Simulate_Login_Task extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void v) {
         if (completedCall) {
-            onAsyncResult.onResultSuccess(1, act.getResources().getString(R.string.response_success));
+            onAsyncResult.onResultSuccess(1, bitmapList);
         } else {
             onAsyncResult.onResultFail(0, act.getResources().getString(R.string.response_fail));
         }
     }
 
     public interface OnAsyncResult {
-        void onResultSuccess(int resultCode, String message);
+        void onResultSuccess(int resultCode, ArrayList<Bitmap> bitmapList);
         void onResultFail(int resultCode, String errorMessage);
     }
 
     //WorkLoad of AsyncTask
-    private boolean performCheckOnCredentials(){
-        boolean exists = false;
-        for (int i = 0; i<list.size(); i++){
-            if(username.equals(list.get(i).getName())){
-                if(password.equals(list.get(i).getPassword())){
-                    exists = true;
-                }
-            }
+    private boolean downloadImages(){
+        boolean imagesDownloaded = false;
+        bitmapList = new ArrayList<>();
+        for(int i = 0; i< PublicStaticVariables.imgUrls.size();i++){
+            Bitmap temp = imageLoader.getBitmap(PublicStaticVariables.imgUrls.get(i));
+            bitmapList.add(temp);
         }
-
-        return exists;
+        if(bitmapList.size()==6){
+            imagesDownloaded = true;
+        }
+        return imagesDownloaded;
     }
 
 }

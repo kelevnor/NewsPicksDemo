@@ -16,7 +16,7 @@
     <string name="demouser">demouser</string>
     <string name="dummytemp">\@demo.com</string>
     <string name="dummypass">test_</string>
-
+    <string name="failedtodownload">Failed to download images.</string>
     <string name="failedtoauth">Failed to authenticate.</string>
     <string name="response_success">success</string>
     <string name="response_fail">fail</string>

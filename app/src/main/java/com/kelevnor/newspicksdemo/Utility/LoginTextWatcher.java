@@ -11,7 +11,7 @@ import com.kelevnor.newspicksdemo.LoginActivity;
 import com.kelevnor.newspicksdemo.R;
 
 /**
- * Created by kelevnor on 1/2/18.
+ * Created by kelevnor on 1/3/18.
  */
 
 public class LoginTextWatcher implements TextWatcher{

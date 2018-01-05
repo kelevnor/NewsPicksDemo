@@ -1,5 +1,10 @@
 package com.kelevnor.newspicksdemo;
 
+/**
+ * Created by kelevnor on 1/3/18.
+ */
+
+
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;

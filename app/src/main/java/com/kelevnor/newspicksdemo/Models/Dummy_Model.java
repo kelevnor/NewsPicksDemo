@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by kelevnor on 1/2/18.
+ * Created by kelevnor on 1/3/18.
  */
 
 public class Dummy_Model {

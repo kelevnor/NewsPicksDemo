@@ -7,12 +7,5 @@
     android:background="@color/colorPrimaryDark"
     tools:showIn="@layout/activity_animation">
 
-    <com.sababado.circularview.CircularView
-        android:id="@+id/circular_view"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:layout_gravity="center"
-        app:centerBackgroundColor="#0000"
-        app:centerDrawable="@drawable/bg_circle_center_drawable"/>
 
 </RelativeLayout>

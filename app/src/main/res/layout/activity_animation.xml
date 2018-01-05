@@ -5,19 +5,90 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
 
-    <LinearLayout
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
-        <com.sababado.circularview.CircularView
-            android:id="@+id/circular_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_circle_center_drawable"/>
 
-            app:centerBackgroundColor="#0000"
-            app:centerDrawable="@drawable/bg_circle_center_drawable"/>
-    </LinearLayout>
+    <com.github.andreilisun.circular_layout.CircularLayout
+        android:id="@+id/cl_outer"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true">
+
+        <!--<android.support.v7.widget.SwitchCompat-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+        <ImageView
+            android:id="@+id/iv_one"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/iv_two"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/iv_three"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/iv_four"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/iv_five"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/iv_six"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/ok" />-->
+
+        <!--<CheckBox-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+        <!--<RadioButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+        <!--<Chronometer-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+    </com.github.andreilisun.circular_layout.CircularLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="240dp"-->
+        <!--android:layout_height="240dp"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_centerInParent="true">-->
+        <!--<com.sababado.circularview.CircularView-->
+            <!--android:id="@+id/circular_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+
+            <!--app:centerBackgroundColor="#0000"-->
+            <!--app:centerDrawable="@drawable/bg_circle_center_drawable"/>-->
+    <!--</LinearLayout>-->
 </RelativeLayout>
 
 <!--<?xml version="1.0" encoding="utf-8"?>-->

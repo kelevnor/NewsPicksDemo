@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 /**
- * Created by kelevnor on 1/2/18.
+ * Created by kelevnor on 1/3/18.
  */
 
 public class Dummy_Model_List {
