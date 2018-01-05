@@ -39,6 +39,8 @@ public class AnimationActivity extends AppCompatActivity implements View.OnTouch
 
         outercl.setOnTouchListener(this);
 
+        animateCircle();
+
         Download_Bitmaps_Task task = new Download_Bitmaps_Task(this);
         task.setOnResultListener(asynResult);
         task.execute();
@@ -86,6 +88,12 @@ public class AnimationActivity extends AppCompatActivity implements View.OnTouch
         System.out.println(mCurrAngle);
     }
 
+    /**
+     * From Download_Bitmaps_Task, Result listener interface to get results
+     * back from asyncronous task Download_Bitmaps_Task
+     */
+
+    //
     Download_Bitmaps_Task.OnAsyncResult asynResult = new Download_Bitmaps_Task.OnAsyncResult() {
         @Override
         public void onResultSuccess(int resultCode, ArrayList<Bitmap> bitmapList) {
@@ -152,15 +160,15 @@ public class AnimationActivity extends AppCompatActivity implements View.OnTouch
 //        view.startAnimation(animation1);
 //    }
 
-//    private void animateCircle(){
-//        RotateAnimation rotateAnimation = new RotateAnimation(0, 360f,
-//                Animation.RELATIVE_TO_SELF, 0.5f,
-//                Animation.RELATIVE_TO_SELF, 0.5f);
-//
-//        rotateAnimation.setInterpolator(new LinearInterpolator());
-//        rotateAnimation.setDuration(12000);
-//        rotateAnimation.setRepeatCount(Animation.INFINITE);
-//        outercl.startAnimation(rotateAnimation);
-//    }
+    private void animateCircle(){
+        RotateAnimation rotateAnimation = new RotateAnimation(0, 360f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+
+        rotateAnimation.setInterpolator(new LinearInterpolator());
+        rotateAnimation.setDuration(12000);
+        rotateAnimation.setRepeatCount(Animation.INFINITE);
+        outercl.startAnimation(rotateAnimation);
+    }
 
 }

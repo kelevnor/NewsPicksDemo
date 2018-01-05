@@ -117,8 +117,8 @@ public class LoginActivity extends AppCompatActivity implements TextView.OnEdito
     }
 
     /**
-     * From Simulate_Login_Task, the interface's result listener within
-     * the Activity to handle here
+     * From Simulate_Login_Task, Result listener interface to get results
+     * back from asyncronous task Simulate_Login_Task
      */
 
     Simulate_Login_Task.OnAsyncResult asynResult = new Simulate_Login_Task.OnAsyncResult() {
