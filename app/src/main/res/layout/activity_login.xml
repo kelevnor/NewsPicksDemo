@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
-                    android:text="demouser1@demo.com"
+                    android:text=""
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
-                    android:text="test_1"
+                    android:text=""
                     android:imeActionLabel="@string/action_sign_in"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
@@ -71,7 +71,8 @@
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:textColor="@color/white"
-                android:background="@drawable/btn_orange_dark_corners_selector"
+                android:enabled="false"
+                android:background="@drawable/btn_orange_light_corners_selector"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
 
