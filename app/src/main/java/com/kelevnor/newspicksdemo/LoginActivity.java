@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import com.kelevnor.newspicksdemo.Models.Dummy_Model;
 import com.kelevnor.newspicksdemo.Tasks.Simulate_Login_Task;
-import com.kelevnor.newspicksdemo.Utility.LoginTextWatcher;
+import com.kelevnor.newspicksdemo.Utility.Inherit_LoginTextWatcher;
 import com.kelevnor.newspicksdemo.Utility.Utility_Helper;
 import com.kelevnor.newspicksdemo.Utility.Utility_Helper_Context;
 
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements TextView.OnEdito
         // Instantiate constructor to assign the class implementing TextWatcher
         // on email and password views and keeping their constant state to adjust the login button's
         // background based on that
-        LoginTextWatcher textWatcher = new LoginTextWatcher(this, mEmailSignInButton, mEmailView, mPasswordView);
+        Inherit_LoginTextWatcher textWatcher = new Inherit_LoginTextWatcher(this, mEmailSignInButton, mEmailView, mPasswordView);
         mPasswordView.addTextChangedListener(textWatcher);
         mEmailView.addTextChangedListener(textWatcher);
 
@@ -81,6 +81,8 @@ public class LoginActivity extends AppCompatActivity implements TextView.OnEdito
         mEmailView = findViewById(R.id.email);
         mPasswordView = findViewById(R.id.password);
         mEmailSignInButton = findViewById(R.id.email_sign_in_button);
+        mEmailView.setText("demouser1@demo.com");
+        mPasswordView.setText("test_1");
     }
 
     /**

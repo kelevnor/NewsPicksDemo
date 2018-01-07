@@ -17,7 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 public class SplashActivity extends AppCompatActivity {
 
 
-    int SPLASH_TIME_OUT = 1500;
+    int INTERVAL_SPLASH_TIME = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, SPLASH_TIME_OUT);
+        }, INTERVAL_SPLASH_TIME);
 
 
     }

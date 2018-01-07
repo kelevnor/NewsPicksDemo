@@ -5,29 +5,29 @@ package com.kelevnor.newspicksdemo;
  *
  */
 
-
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import com.github.andreilisun.circular_layout.CircularLayout;
 import com.kelevnor.newspicksdemo.Tasks.Download_Bitmaps_Task;
+import com.kelevnor.newspicksdemo.Utility.Inherit_BitmapAlphaAnimationListener;
+import com.kelevnor.newspicksdemo.Utility.Inherit_ImageViewRotateAnimationListener;
 import com.kelevnor.newspicksdemo.Utility.Utility_Helper;
 import com.kelevnor.newspicksdemo.Utility.Utility_Helper_Context;
 
 import java.util.ArrayList;
 
 public class AnimationActivity extends AppCompatActivity implements View.OnTouchListener{
+
     CircularLayout outercl;
     ImageView image1, image2, image3, image4, image5, image6;
+
+    Inherit_ImageViewRotateAnimationListener rotateListener;
     private double mCurrAngle = 0;
     private double mPrevAngle = 0;
     @Override
@@ -39,7 +39,8 @@ public class AnimationActivity extends AppCompatActivity implements View.OnTouch
 
         outercl.setOnTouchListener(this);
 
-        animateCircle();
+        rotateListener = new Inherit_ImageViewRotateAnimationListener(this, outercl);
+        rotateListener.setRotateAnimationAndListener();
 
         Download_Bitmaps_Task task = new Download_Bitmaps_Task(this);
         task.setOnResultListener(asynResult);
@@ -56,25 +57,14 @@ public class AnimationActivity extends AppCompatActivity implements View.OnTouch
         image6 = findViewById(R.id.iv_six);
     }
 
-
-    private void displayBitmapsOnViews(ArrayList<Bitmap> bitmapList){
-        image1.setImageBitmap(bitmapList.get(0));
-        image2.setImageBitmap(bitmapList.get(1));
-        image3.setImageBitmap(bitmapList.get(2));
-        image4.setImageBitmap(bitmapList.get(3));
-        image5.setImageBitmap(bitmapList.get(4));
-        image6.setImageBitmap(bitmapList.get(5));
-    }
-
-    private void animateCircleFromAngle(double angle){
-        RotateAnimation rotateAnimation = new RotateAnimation((float)angle, 360f,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-
-        rotateAnimation.setInterpolator(new LinearInterpolator());
-        rotateAnimation.setDuration(12000);
-        rotateAnimation.setRepeatCount(Animation.INFINITE);
-        outercl.startAnimation(rotateAnimation);
+    private void displayBitmapsOnViews(ArrayList<Bitmap> bitmapList) {
+        Inherit_BitmapAlphaAnimationListener bmListener = new Inherit_BitmapAlphaAnimationListener(this);
+        bmListener.setAlphaAnimationAndListener(image1, bitmapList.get(0), 1);
+        bmListener.setAlphaAnimationAndListener(image2, bitmapList.get(1), 2);
+        bmListener.setAlphaAnimationAndListener(image3, bitmapList.get(2), 3);
+        bmListener.setAlphaAnimationAndListener(image4, bitmapList.get(3), 4);
+        bmListener.setAlphaAnimationAndListener(image5, bitmapList.get(4), 5);
+        bmListener.setAlphaAnimationAndListener(image6, bitmapList.get(5), 6);
     }
 
     private void animateTouch(double fromDegrees, double toDegrees, long durationMillis) {
@@ -93,7 +83,6 @@ public class AnimationActivity extends AppCompatActivity implements View.OnTouch
      * back from asyncronous task Download_Bitmaps_Task
      */
 
-    //
     Download_Bitmaps_Task.OnAsyncResult asynResult = new Download_Bitmaps_Task.OnAsyncResult() {
         @Override
         public void onResultSuccess(int resultCode, ArrayList<Bitmap> bitmapList) {
@@ -121,54 +110,16 @@ public class AnimationActivity extends AppCompatActivity implements View.OnTouch
             case MotionEvent.ACTION_MOVE: {
                 mPrevAngle = mCurrAngle;
                 mCurrAngle = Math.toDegrees(Math.atan2(x - xc, yc - y));
-                //Adding this method to all imageviews rotates the views depending on angle
-
-                //  postRotate(image1, 360f-mCurrAngle);
-                //  postRotate(image2, 360f-mCurrAngle);
-                //  postRotate(image3, 360f-mCurrAngle);
-                //  postRotate(image4, 360f-mCurrAngle);
-                //  postRotate(image5, 360f-mCurrAngle);
-                //  postRotate(image6, 360f-mCurrAngle);
                 animateTouch(mPrevAngle, mCurrAngle, 0);
                 System.out.println(mCurrAngle);
                 break;
             }
             case MotionEvent.ACTION_UP : {
-                animateCircleFromAngle(mPrevAngle);
+                rotateListener.setRotateAnimationAndListenerFromAngle(mPrevAngle);
                 break;
             }
         }
         return true;
-    }
-
-    private void postRotate(ImageView view, double angle){
-
-        float width = ((ImageView)view).getDrawable().getBounds().width();
-        float height = ((ImageView)view).getDrawable().getBounds().height();
-        Matrix matrix=new Matrix();
-        view.setScaleType(ImageView.ScaleType.MATRIX);   //required
-        matrix.postRotate((float) angle, width/2, height/2);
-        view.setImageMatrix(matrix);
-    }
-
-//Testing methods that have different results
-//    private void animateView(ImageView view){
-//        AlphaAnimation animation1 = new AlphaAnimation(0.0f, 1.0f);
-//        animation1.setDuration(1000);
-//        animation1.setStartOffset(5000);
-//        animation1.setFillAfter(true);
-//        view.startAnimation(animation1);
-//    }
-
-    private void animateCircle(){
-        RotateAnimation rotateAnimation = new RotateAnimation(0, 360f,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-
-        rotateAnimation.setInterpolator(new LinearInterpolator());
-        rotateAnimation.setDuration(12000);
-        rotateAnimation.setRepeatCount(Animation.INFINITE);
-        outercl.startAnimation(rotateAnimation);
     }
 
 }

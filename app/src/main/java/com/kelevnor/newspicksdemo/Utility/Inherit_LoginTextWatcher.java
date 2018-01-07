@@ -14,7 +14,7 @@ import com.kelevnor.newspicksdemo.R;
  * Created by kelevnor on 1/3/18.
  */
 
-public class LoginTextWatcher implements TextWatcher{
+public class Inherit_LoginTextWatcher implements TextWatcher{
 
 
     Button btn;
@@ -22,7 +22,7 @@ public class LoginTextWatcher implements TextWatcher{
     EditText email;
     EditText password;
 
-    public LoginTextWatcher(Activity act, Button btn, EditText email, EditText password){
+    public Inherit_LoginTextWatcher(Activity act, Button btn, EditText email, EditText password){
         this.act = act;
         this.btn = btn;
         this.email = email;
