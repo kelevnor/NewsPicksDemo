@@ -81,8 +81,10 @@ public class LoginActivity extends AppCompatActivity implements TextView.OnEdito
         mEmailView = findViewById(R.id.email);
         mPasswordView = findViewById(R.id.password);
         mEmailSignInButton = findViewById(R.id.email_sign_in_button);
-        mEmailView.setText("demouser1@demo.com");
-        mPasswordView.setText("test_1");
+
+        //Test Credentials
+        //mEmailView.setText("demouser1@demo.com");
+        //mPasswordView.setText("test_1");
     }
 
     /**

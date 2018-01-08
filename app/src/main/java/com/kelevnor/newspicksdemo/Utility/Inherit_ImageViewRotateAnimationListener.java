@@ -59,8 +59,6 @@ public class Inherit_ImageViewRotateAnimationListener implements Animation.Anima
     @Override
     public void onAnimationEnd(Animation animation) {
 
-//        rotateAnimation.cancel();
-
     }
 
     @Override
